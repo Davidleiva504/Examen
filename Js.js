@@ -135,62 +135,7 @@ function insertarDatos(){
 
 }
 
-/*function cargarH(){
-    $.ajax({
-        type: "GET",
-        url: "https://desfrlopez.me/dleiva/api/TP",
-        success: function(data){
 
-            for (var i = 0; i < data.length ; i++ ){
-
-                cuerpoTabla += " <tr> " +
-                                "<td>" + data[i].Type_Pokemon + "</td>" +
-                                
-                                "</tr>";
-
-            }
-
-            cuerpoTabla += " </tbody>";
-
-            $("#reportePersona").html(cuerpoTabla);
-            
-
-        },
-        dataType: "json"
-      });
-
-}
-
-function insertarDatosH(){
-
-    jQuery.ajaxSetup({async:false});
-
-    var datosForm = {
-        Name : $("#nombre").val(),
-        Birthdate : $("#fecha").val(),
-        Team_Pokemon : $("#Pokemon").val()
-    };
-
-    var mensaje = "Insercion Exitosa";
-    $.ajax({
-        type: "POST",
-        url: "https://desfrlopez.me/dleiva/api/TP",
-        data: JSON.stringify(datosForm),
-        success: function(data){
-            console.log(data);
-            for (var i = 0; i < data.length ; i++ ){
-                mensaje += " Id Registro "+ data[i].insertId;                
-            }
-            alert(mensaje);
-        },
-        dataType: "json", 
-        contentType: "application/json; charset=utf-8"
-      });
-
-      cargarDatos();
-
-}
-*/
 
 
 
