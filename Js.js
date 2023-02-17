@@ -4,33 +4,26 @@ function cargarDatos(){
                         "<tr> " + 
                         "<th> Id entrenador </th> "+
                         "<th> Nombre </th> "+
-                        "<th> Fecha Nacimiento </th> "+
-                        "<th> Pokemon </th> "+
-                        "<th> Tipo </th> "+
-                        "<th> Region </th> "+
-                        "<th> MBO </th> "+
+                        "<th> edad</th> "+
+                        "<th> Genero </th> "+
+                       
                         "</tr> "
                         +" </thead> <tbody>";
 
     $.ajax({
         type: "GET",
-        url: "https://desfrlopez.me/dleiva/api/entrenador/",
-        
-       
-
-        
+        url: "https://desfrlopez.me/dleiva/api/entrenadores/",
+ 
         success: function(data){
 
             for (var i = 0; i < data.length ; i++ ){
 
                 cuerpoTabla += " <tr> " +
-                                "<td>" + data[i].Id_Coach + "</td>" +
-                                "<td>" + data[i].Name+ "</td>"+
-                                "<td>" + data[i].Birthdate+ "</td>"+
-                                "<td>" + data[i].Team_Pokemon+ "</td>"+
-                                "<td>" + data[i].Type_Pokemon+ "</td>"+
-                                "<td>" + data[i].Region+ "</td>"+
-                                "<td>" + data[i].MBO+ "</td>"+
+                                "<td>" + data[i].id + "</td>" +
+                                "<td>" + data[i].nombre+ "</td>"+
+                                "<td>" + data[i].edad+ "</td>"+
+                                "<td>" + data[i].genero+ "</td>"+
+                                
                                 "</tr>";
 
             }
@@ -50,28 +43,21 @@ function cargarDatos(){
       };
       
 
-      
-
-
-
-
 function insertarDatos(){
 
     jQuery.ajaxSetup({async:false});
 
     var datosForm = {
-        Name : $("#nombre").val(),
-        Birthdate : $("#fecha").val(),
-        Team_Pokemon : $("#Pokemon").val(),
-        Type_Pokemon : $("#tipo").val(),
-        Type_Pokemon : $("#Region").val(),
-        Type_Pokemon : $("#MBO").val(),
+        nombre : $("#nombre").val(),
+        edad : $("#edad").val(),
+        genero : $("#genero").val(),
+       
     };
 
     var mensaje = "Insercion Exitosa";
     $.ajax({
         type: "POST",
-        url: "https://desfrlopez.me/dleiva/api/entrenador",
+        url: "https://desfrlopez.me/dleiva/api/entrenadores",
         data: JSON.stringify(datosForm),
         success: function(data){
             console.log(data);
@@ -83,53 +69,6 @@ function insertarDatos(){
         dataType: "json", 
         contentType: "application/json; charset=utf-8"
       });
-
-      $.ajax({
-        type: "POST",
-        url: "https://desfrlopez.me/dleiva/api/TP",
-        data: JSON.stringify(datosForm),
-        success: function(data){
-            console.log(data);
-            for (var i = 0; i < data.length ; i++ ){
-                mensaje += " Id Registro "+ data[i].insertId;                
-            }
-            alert(mensaje);
-        },
-        dataType: "json", 
-        contentType: "application/json; charset=utf-8"
-      });
-
-      $.ajax({
-        type: "POST",
-        url: "https://desfrlopez.me/dleiva/api/Region",
-        data: JSON.stringify(datosForm),
-        success: function(data){
-            console.log(data);
-            for (var i = 0; i < data.length ; i++ ){
-                mensaje += " Id Registro "+ data[i].insertId;                
-            }
-            alert(mensaje);
-        },
-        dataType: "json", 
-        contentType: "application/json; charset=utf-8"
-      });
-      $.ajax({
-        type: "POST",
-        url: "https://desfrlopez.me/dleiva/api/MBO",
-        data: JSON.stringify(datosForm),
-        success: function(data){
-            console.log(data);
-            for (var i = 0; i < data.length ; i++ ){
-                mensaje += " Id Registro "+ data[i].insertId;                
-            }
-            alert(mensaje);
-        },
-        dataType: "json", 
-        contentType: "application/json; charset=utf-8"
-      });
-
-
-
 
       cargarDatos();
 

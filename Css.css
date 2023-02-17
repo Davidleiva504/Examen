@@ -1,0 +1,20 @@
+body{
+ background-image: url(Img/sobble.jpg);
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-attachment: fixed;
+}
+header{
+    background-attachment: fixed;
+    text-align: center;
+    padding: 13px;
+    
+}
+
+form{
+    background-color: #6c81cb;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 500px;
+}
