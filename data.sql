@@ -30,6 +30,7 @@ CREATE TABLE Tb_EP (
   id_Pokemon INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Name_P VARCHAR(50) NOT NULL,
   Type_Pokemon INT(11) NOT NULL,
+  MBO INT(11) NOT NULL,
   FOREIGN KEY (Type_Pokemon) REFERENCES Tb_TP(id_Pokemon)
 );
 
@@ -50,10 +51,12 @@ CREATE TABLE Tb_Medallas (
   M_Electric VARCHAR(20) NOT NULL,
   M_Poison VARCHAR(20) NOT NULL,
   M_Ice VARCHAR(20) NOT NULL
+  FOREIGN KEY (M_Rock) REFERENCES Tb_entrenador(id_Coach)
 );
 
 CREATE TABLE Tb_MBOE (
   Movement_z VARCHAR(20) NOT NULL,
   Mega_Evolution VARCHAR(20) NOT NULL,
   Giga_max VARCHAR(20) NOT NULL
+  FOREIGN KEY (Movement_z) REFERENCES Tb_EP(MBO)
 );
