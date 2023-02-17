@@ -6,8 +6,8 @@ body{
 }
 header{
     background-attachment: fixed;
-    text-align: center;
-    padding: 13px;
+    text-align: start;
+    
     
 }
 
@@ -17,4 +17,11 @@ form{
     border-radius: 10px;
     margin: 0 auto;
     width: 500px;
+}
+
+table{
+    background-color: rgb(15, 67, 158);
+    padding: 1000px;
+    width: 1000px;
+    
 }

@@ -57,7 +57,7 @@ function insertarDatos(){
     var mensaje = "Insercion Exitosa";
     $.ajax({
         type: "POST",
-        url: "https://desfrlopez.me/dleiva/api/entrenadores",
+        url: "https://desfrlopez.me/dleiva/api/entrenadores/",
         data: JSON.stringify(datosForm),
         success: function(data){
             console.log(data);
@@ -74,7 +74,62 @@ function insertarDatos(){
 
 }
 
+function actualizarDatos(){
 
+    jQuery.ajaxSetup({async:false});
+
+    var datosForm = {
+        nombre : $("#nombre").val(),
+        edad : $("#edad").val(),
+        genero : $("#genero").val()
+    };
+
+    let id = $("#id").val();
+
+    var mensaje = "Actualizacion Exitosa";
+    $.ajax({
+        type: "PUT",
+        url: "https://desfrlopez.me/dleiva/api/entrenadores/" +id,
+        data: JSON.stringify(datosForm),
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatos();
+
+}
+
+/*function borrarDatos(){
+
+    jQuery.ajaxSetup({async:false});
+
+    let id = $("#id").val();
+
+    var mensaje = "Borrado Exitoso Exitoso";
+    $.ajax({
+        type: "DELETE",
+        url: "https://desfrlopez.me/dleiva/api/entrenadores/"+id,
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatos();
+
+}*/
 
 
 
