@@ -1,62 +1,42 @@
-CREATE TABLE Tb_TP (
-  T_normal VARCHAR(20) NOT NULL,
-  T_fire VARCHAR(20) NOT NULL,
-  T_water VARCHAR(20) NOT NULL,
-  T_plant VARCHAR(20) NOT NULL,
-  T_electric VARCHAR(20) NOT NULL,
-  T_ice VARCHAR(20) NOT NULL,
-  T_fight VARCHAR(20) NOT NULL,
-  T_poison VARCHAR(20) NOT NULL,
-  T_ground VARCHAR(20) NOT NULL,
-  T_flying VARCHAR(20) NOT NULL,
-  T_psychic VARCHAR(20) NOT NULL,
-  T_bug VARCHAR(20) NOT NULL,
-  T_rock VARCHAR(20) NOT NULL,
-  T_ghost VARCHAR(20) NOT NULL,
-  T_dragon VARCHAR(20) NOT NULL,
-  T_loss VARCHAR(20) NOT NULL,
-  T_steel VARCHAR(20) NOT NULL,
-  T_fairy VARCHAR(20) NOT NULL
+CREATE TABLE pokemons (
+  id INT PRIMARY KEY,
+  nombre VARCHAR(255),
+  tipo1 VARCHAR(255),
+  tipo2 VARCHAR(255),
+  nivel INT,
+  hp INT
 );
 
-CREATE TABLE Tb_entrenador (
-  Id_Coach INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Name VARCHAR(50) NOT NULL,
-  Birthdate DATE NOT NULL,
-  Team_Pokemon INT(11) NOT NULL
+CREATE TABLE habilidades (
+  id INT PRIMARY KEY,
+  nombre VARCHAR(255)
 );
 
-CREATE TABLE Tb_EP (
-  id_Pokemon INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Name_P VARCHAR(50) NOT NULL,
-  Type_Pokemon INT(11) NOT NULL,
-  MBO INT(11) NOT NULL,
-  FOREIGN KEY (Type_Pokemon) REFERENCES Tb_TP(id_Pokemon)
+CREATE TABLE pokemon_habilidades (
+  id INT PRIMARY KEY,
+  pokemon_id INT,
+  habilidad_id INT,
+  FOREIGN KEY (pokemon_id) REFERENCES pokemons(id),
+  FOREIGN KEY (habilidad_id) REFERENCES habilidades(id)
 );
 
-CREATE TABLE Region_Liga (
-  Johto VARCHAR(20) NOT NULL,
-  Hoenn VARCHAR(20) NOT NULL,
-  Sinnoh VARCHAR(20) NOT NULL,
-  Unova VARCHAR(20) NOT NULL,
-  Kalos VARCHAR(20) NOT NULL,
-  To_the VARCHAR(20) NOT NULL,
-  Galar VARCHAR(20) NOT NULL
+CREATE TABLE entrenadores (
+  id INT PRIMARY KEY,
+  nombre VARCHAR(255),
+  edad INT,
+  genero VARCHAR(255)
 );
 
-CREATE TABLE Tb_Medallas (
-  M_Rock VARCHAR(20) NOT NULL,
-  M_Flying VARCHAR(20) NOT NULL,
-  M_Fight VARCHAR(20) NOT NULL,
-  M_Electric VARCHAR(20) NOT NULL,
-  M_Poison VARCHAR(20) NOT NULL,
-  M_Ice VARCHAR(20) NOT NULL
-  FOREIGN KEY (M_Rock) REFERENCES Tb_entrenador(id_Coach)
+CREATE TABLE regiones (
+  id INT PRIMARY KEY,
+  nombre VARCHAR(255)
 );
 
-CREATE TABLE Tb_MBOE (
-  Movement_z VARCHAR(20) NOT NULL,
-  Mega_Evolution VARCHAR(20) NOT NULL,
-  Giga_max VARCHAR(20) NOT NULL
-  FOREIGN KEY (Movement_z) REFERENCES Tb_EP(MBO)
+CREATE TABLE medallas (
+  id INT PRIMARY KEY,
+  entrenador_id INT,
+  region_id INT,
+  nombre VARCHAR(255),
+  FOREIGN KEY (entrenador_id) REFERENCES entrenadores(id),
+  FOREIGN KEY (region_id) REFERENCES regiones(id)
 );
