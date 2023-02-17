@@ -1,5 +1,5 @@
 CREATE TABLE pokemons (
-  id INT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(255),
   tipo1 VARCHAR(255),
   tipo2 VARCHAR(255),
@@ -8,12 +8,12 @@ CREATE TABLE pokemons (
 );
 
 CREATE TABLE habilidades (
-  id INT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(255)
 );
 
 CREATE TABLE pokemon_habilidades (
-  id INT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   pokemon_id INT,
   habilidad_id INT,
   FOREIGN KEY (pokemon_id) REFERENCES pokemons(id),
@@ -21,19 +21,19 @@ CREATE TABLE pokemon_habilidades (
 );
 
 CREATE TABLE entrenadores (
-  id INT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(255),
   edad INT,
   genero VARCHAR(255)
 );
 
 CREATE TABLE regiones (
-  id INT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(255)
 );
 
 CREATE TABLE medallas (
-  id INT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   entrenador_id INT,
   region_id INT,
   nombre VARCHAR(255),
