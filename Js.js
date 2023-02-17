@@ -1,3 +1,4 @@
+/* entrenadores */
 function cargarDatos(){
 
     var cuerpoTabla = " <thead> "+
@@ -106,7 +107,7 @@ function actualizarDatos(){
 
 }
 
-/*function borrarDatos(){
+function borrarDatos(){
 
     jQuery.ajaxSetup({async:false});
 
@@ -129,52 +130,61 @@ function actualizarDatos(){
 
       cargarDatos();
 
-}*/
+}
 
+/* Regiones */
+function cargarDatosR(){
 
+    var cuerpoTabla = " <thead> "+
+                        "<tr> " + 
+                        "<th> Id Region </th> "+
+                        "<th> Region </th> "+
+                        "</tr> "
+                        +" </thead> <tbody>";
 
+    $.ajax({
+        type: "GET",
+        url: "https://desfrlopez.me/dleiva/api/regiones/",
+ 
+        success: function(data){
 
+            for (var i = 0; i < data.length ; i++ ){
 
+                cuerpoTabla += " <tr> " +
+                                "<td>" + data[i].id + "</td>" +
+                                "<td>" + data[i].nombre+ "</td>"+
+                                "</tr>";
 
+            }
 
+            cuerpoTabla += " </tbody>";
 
+            $("#reportePersona").html(cuerpoTabla);
+            
 
+        },
+        dataType: "json"
+      });
 
+            
+  
+        
+      };
+      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function actualizarDatos(){
+function insertarDatosR(){
 
     jQuery.ajaxSetup({async:false});
 
     var datosForm = {
-        Name : $("#nombre").val(),
-        Birthdate : $("#fecha").val(),
-        Team_Pokemon : $("#Pokemon").val()
+        nombre : $("#nombre").val(),
+    
     };
 
-    let id = $("#id").val();
-
-    var mensaje = "Actualizacion Exitosa";
+    var mensaje = "Insercion Exitosa";
     $.ajax({
-        type: "PUT",
-        url: "https://desfrlopez.me/dleiva/api/entrenador/"+id,
+        type: "POST",
+        url: "https://desfrlopez.me/dleiva/api/regiones/",
         data: JSON.stringify(datosForm),
         success: function(data){
             console.log(data);
@@ -187,20 +197,25 @@ function actualizarDatos(){
         contentType: "application/json; charset=utf-8"
       });
 
-      cargarDatos();
+      cargarDatosR();
 
 }
 
-function borrarDatos(){
+function actualizarDatosR(){
 
     jQuery.ajaxSetup({async:false});
 
+    var datosForm = {
+        nombre : $("#nombre").val(),
+    };
+
     let id = $("#id").val();
 
-    var mensaje = "Borrado Exitoso Exitoso";
+    var mensaje = "Actualizacion Exitosa";
     $.ajax({
-        type: "DELETE",
-        url: "https://desfrlopez.me/dleiva/api/entrenador/"+id,
+        type: "PUT",
+        url: "https://desfrlopez.me/dleiva/api/regiones/" +id,
+        data: JSON.stringify(datosForm),
         success: function(data){
             console.log(data);
             for (var i = 0; i < data.length ; i++ ){
@@ -212,9 +227,332 @@ function borrarDatos(){
         contentType: "application/json; charset=utf-8"
       });
 
-      cargarDatos();
+      cargarDatosR();
 
 }
+
+function borrarDatosR(){
+
+    jQuery.ajaxSetup({async:false});
+
+    let id = $("#id").val();
+
+    var mensaje = "Borrado Exitoso Exitoso";
+    $.ajax({
+        type: "DELETE",
+        url: "https://desfrlopez.me/dleiva/api/regiones/"+id,
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosR();
+
+}
+
+
+/* Medallas */
+function cargarDatosM(){
+
+    var cuerpoTabla = " <thead> "+
+                        "<tr> " + 
+                        "<th> Id medalla </th> "+
+                        "<th> Id entrenador </th> "+
+                        "<th> Id region </th> "+
+                        "<th> Nombre medalla </th> "+
+                        
+                       
+                        "</tr> "
+                        +" </thead> <tbody>";
+
+    $.ajax({
+        type: "GET",
+        url: "https://desfrlopez.me/dleiva/api/medallas/",
+ 
+        success: function(data){
+
+            for (var i = 0; i < data.length ; i++ ){
+
+                cuerpoTabla += " <tr> " +
+                                "<td>" + data[i].id + "</td>" +
+                                "<td>" + data[i].entrenador_id+ "</td>"+
+                                "<td>" + data[i].region_id+ "</td>"+
+                                "<td>" + data[i].nombre+ "</td>"+
+                               
+                                
+                                "</tr>";
+
+            }
+
+            cuerpoTabla += " </tbody>";
+
+            $("#reportePersona").html(cuerpoTabla);
+            
+
+        },
+        dataType: "json"
+      });
+
+            
+  
+        
+      };
+      
+
+function insertarDatosM(){
+
+    jQuery.ajaxSetup({async:false});
+
+    var datosForm = {
+        entrenador_id : $("#entrenador").val(),
+        region_id : $("#region").val(),
+        nombre : $("#nombre").val(),
+       
+    };
+
+    var mensaje = "Insercion Exitosa";
+    $.ajax({
+        type: "POST",
+        url: "https://desfrlopez.me/dleiva/api/medallas/",
+        data: JSON.stringify(datosForm),
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosM();
+
+}
+
+function actualizarDatosM(){
+
+    jQuery.ajaxSetup({async:false});
+
+    var datosForm = {
+        entrenador_id : $("#entrenador").val(),
+        region_id : $("#region").val(),
+        nombre : $("#nombre").val(),
+    };
+
+    let id = $("#id").val();
+
+    var mensaje = "Actualizacion Exitosa";
+    $.ajax({
+        type: "PUT",
+        url: "https://desfrlopez.me/dleiva/api/medallas/" +id,
+        data: JSON.stringify(datosForm),
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosM();
+
+}
+
+function borrarDatosM(){
+
+    jQuery.ajaxSetup({async:false});
+
+    let id = $("#id").val();
+
+    var mensaje = "Borrado Exitoso Exitoso";
+    $.ajax({
+        type: "DELETE",
+        url: "https://desfrlopez.me/dleiva/api/medallas/"+id,
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosM();
+
+}
+
+
+/* Pokemons */
+function cargarDatosP(){
+
+    var cuerpoTabla = " <thead> "+
+                        "<tr> " + 
+                        "<th> Id </th> "+
+                        "<th> Nombre pokemon</th> "+
+                        "<th> tipo1</th> "+
+                        "<th> tipo2</th> "+
+                        "<th> nivel </th> "+
+                        "<th> Hp</th> "+
+                       
+                        "</tr> "
+                        +" </thead> <tbody>";
+
+    $.ajax({
+        type: "GET",
+        url: "https://desfrlopez.me/dleiva/api/pokemons/",
+ 
+        success: function(data){
+
+            for (var i = 0; i < data.length ; i++ ){
+
+                cuerpoTabla += " <tr> " +
+                                "<td>" + data[i].id + "</td>" +
+                                "<td>" + data[i].nombre+ "</td>"+
+                                "<td>" + data[i].tipo1+ "</td>"+
+                                "<td>" + data[i].tipo2+ "</td>"+
+                                "<td>" + data[i].nivel+ "</td>"+
+                                "<td>" + data[i].hp+ "</td>"+
+                                
+                                "</tr>";
+
+            }
+
+            cuerpoTabla += " </tbody>";
+
+            $("#reportePersona").html(cuerpoTabla);
+            
+
+        },
+        dataType: "json"
+      });
+
+            
+  
+        
+      };
+      
+
+function insertarDatosP(){
+
+    jQuery.ajaxSetup({async:false});
+
+    var datosForm = {
+        nombre : $("#nombre").val(),
+       tipo1 : $("#tipo1").val(),
+        tipo2 : $("#tipo2").val(),
+        nivel : $("#nivel").val(),
+        hp : $("#Hp").val(),
+       
+    };
+
+    var mensaje = "Insercion Exitosa";
+    $.ajax({
+        type: "POST",
+        url: "https://desfrlopez.me/dleiva/api/pokemons/",
+        data: JSON.stringify(datosForm),
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosP();
+
+}
+
+function actualizarDatosP(){
+
+    jQuery.ajaxSetup({async:false});
+
+    var datosForm = {
+        nombre : $("#nombre").val(),
+       tipo1 : $("#tipo1").val(),
+        tipo2 : $("#tipo2").val(),
+        nivel : $("#nivel").val(),
+        hp : $("#Hp").val(),
+    };
+
+    let id = $("#id").val();
+
+    var mensaje = "Actualizacion Exitosa";
+    $.ajax({
+        type: "PUT",
+        url: "https://desfrlopez.me/dleiva/api/pokemons/" +id,
+        data: JSON.stringify(datosForm),
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosP();
+
+}
+
+function borrarDatosP(){
+
+    jQuery.ajaxSetup({async:false});
+
+    let id = $("#id").val();
+
+    var mensaje = "Borrado Exitoso Exitoso";
+    $.ajax({
+        type: "DELETE",
+        url: "https://desfrlopez.me/dleiva/api/pokemons/"+id,
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosP();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

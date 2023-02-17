@@ -11,7 +11,7 @@
   <script src="Js.js"></script>
 
 </head>
-<body onload="cargarDatos()">
+<body onload="cargarDatosR()">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
@@ -65,46 +65,26 @@
             <label for="nombre" class="form-label">Nombre:</label>
             <input type="text" class="form-control" id="nombre" placeholder="Ingresar Nombre" name="nombre">
           </div>
-          <div class="mb-3 mt-3">
-            <label for="fecha" class="form-label">Fecha:</label>
-            <input type="date" class="form-control" id="fecha" placeholder="Ingresar Fecha" name="fecha">
-          </div>
-          <div class="mb-3 mt-3">
-            <label for="Pokemon" class="form-label">Pokemon:</label>
-            <input type="text" class="form-control" id="Pokemon" placeholder="Ingresar Pokemon" name="Pokemon">
-          </div>
-          <div class="mb-3 mt-3">
-            <label for="Tipo" class="form-label">tipo:</label>
-            <input type="text" class="form-control" id="tipo" placeholder="Ingresar tipo" name="tipo">
-          </div>
-
-          <div class="mb-3 mt-3">
-            <label for="Region" class="form-label">Region:</label>
-            <input type="text" class="form-control" id="tipo" placeholder="Ingresar Region" name="region">
-          </div>
-          
-          <div class="mb-3 mt-3">
-            <label for="MBO" class="form-label">MBO:</label>
-            <input type="text" class="form-control" id="MBO" placeholder="MBO" name="MBO">
-          </div>
+      
 
           <button type="button"   
-            onclick="insertarDatos()"
+            onclick="insertarDatosR()"
           class="btn btn-primary">Insertar Datos</button>
 
           <button type="button"   
-            onclick="actualizarDatos()"
+            onclick="actualizarDatosR()"
           class="btn btn-warning">Actualizar Datos</button>
 
           <button type="button"   
-            onclick="borrarDatos()"
+            onclick="borrarDatosR()"
           class="btn btn-danger">Borrar Datos</button>
 
         
 
         </form>
-
-        <table  class="table" id="reportePersona">
+<br>
+<br>
+        <table  class="table" id="reportePersona" style="color: white;">
 
         </table>
 
