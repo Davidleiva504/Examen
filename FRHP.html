@@ -11,7 +11,7 @@
   <script src="Js.js"></script>
 
 </head>
-<body onload="cargarDatos()">
+<body onload="cargarDatosHP()">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
@@ -62,49 +62,34 @@
             <input type="number" class="form-control" id="id" placeholder="Ingresar Id" name="id">
           </div>
           <div class="mb-3 mt-3">
-            <label for="nombre" class="form-label">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Ingresar Nombre" name="nombre">
+            <label for="Pokemon" class="form-label">Id Pokemon:</label>
+            <input type="number" class="form-control" id="Pokemon" placeholder="Ingresar Nombre" name="Pokemon">
           </div>
           <div class="mb-3 mt-3">
-            <label for="fecha" class="form-label">Fecha:</label>
-            <input type="date" class="form-control" id="fecha" placeholder="Ingresar Fecha" name="fecha">
-          </div>
-          <div class="mb-3 mt-3">
-            <label for="Pokemon" class="form-label">Pokemon:</label>
-            <input type="text" class="form-control" id="Pokemon" placeholder="Ingresar Pokemon" name="Pokemon">
-          </div>
-          <div class="mb-3 mt-3">
-            <label for="Tipo" class="form-label">tipo:</label>
-            <input type="text" class="form-control" id="tipo" placeholder="Ingresar tipo" name="tipo">
-          </div>
-
-          <div class="mb-3 mt-3">
-            <label for="Region" class="form-label">Region:</label>
-            <input type="text" class="form-control" id="tipo" placeholder="Ingresar Region" name="region">
+            <label for="Habilidad" class="form-label">Id Habilidad:</label>
+            <input type="number" class="form-control" id="Habilidad" placeholder="Ingresar Fecha" name="Habilidad">
           </div>
           
-          <div class="mb-3 mt-3">
-            <label for="MBO" class="form-label">MBO:</label>
-            <input type="text" class="form-control" id="MBO" placeholder="MBO" name="MBO">
-          </div>
 
           <button type="button"   
-            onclick="insertarDatos()"
+            onclick="insertarDatosHP()"
           class="btn btn-primary">Insertar Datos</button>
 
           <button type="button"   
-            onclick="actualizarDatos()"
+            onclick="actualizarDatosHP()"
           class="btn btn-warning">Actualizar Datos</button>
 
           <button type="button"   
-            onclick="borrarDatos()"
+            onclick="borrarDatosHP()"
           class="btn btn-danger">Borrar Datos</button>
 
         
 
         </form>
 
-        <table  class="table" id="reportePersona">
+        <br>
+        <br>
+        <table  class="table" id="reportePersona" style="color: white;">
 
         </table>
 

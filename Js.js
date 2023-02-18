@@ -537,9 +537,264 @@ function borrarDatosP(){
 }
 
 
+/* Habilidades */
+function cargarDatosH(){
 
+    var cuerpoTabla = " <thead> "+
+                        "<tr> " + 
+                        "<th> Id  </th> "+
+                        "<th> Habilidad </th> "+   
+                        "</tr> "
+                        +" </thead> <tbody>";
 
+    $.ajax({
+        type: "GET",
+        url: "https://desfrlopez.me/dleiva/api/habilidades/",
+ 
+        success: function(data){
 
+            for (var i = 0; i < data.length ; i++ ){
+
+                cuerpoTabla += " <tr> " +
+                                "<td>" + data[i].id + "</td>" +
+                                "<td>" + data[i].nombre+ "</td>"+
+                                "</tr>";
+
+            }
+
+            cuerpoTabla += " </tbody>";
+
+            $("#reportePersona").html(cuerpoTabla);
+            
+
+        },
+        dataType: "json"
+      });
+
+            
+  
+        
+      };
+      
+
+function insertarDatosH(){
+
+    jQuery.ajaxSetup({async:false});
+
+    var datosForm = {
+        nombre : $("#nombre").val(),
+     
+       
+    };
+
+    var mensaje = "Insercion Exitosa";
+    $.ajax({
+        type: "POST",
+        url: "https://desfrlopez.me/dleiva/api/habilidades/",
+        data: JSON.stringify(datosForm),
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosH();
+
+}
+
+function actualizarDatosH(){
+
+    jQuery.ajaxSetup({async:false});
+
+    var datosForm = {
+        nombre : $("#nombre").val(),
+  
+    };
+
+    let id = $("#id").val();
+
+    var mensaje = "Actualizacion Exitosa";
+    $.ajax({
+        type: "PUT",
+        url: "https://desfrlopez.me/dleiva/api/habilidades/" +id,
+        data: JSON.stringify(datosForm),
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosH();
+
+}
+
+function borrarDatosH(){
+
+    jQuery.ajaxSetup({async:false});
+
+    let id = $("#id").val();
+
+    var mensaje = "Borrado Exitoso Exitoso";
+    $.ajax({
+        type: "DELETE",
+        url: "https://desfrlopez.me/dleiva/api/habilidades/"+id,
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosH();
+
+}
+
+/* Habilidades Pokemon */
+function cargarDatosHP(){
+
+    var cuerpoTabla = " <thead> "+
+                        "<tr> " + 
+                        "<th> Id  </th> "+
+                        "<th> Id Pokemon </th> "+
+                        "<th> Id Habilidad </th> "+
+                        
+                       
+                        "</tr> "
+                        +" </thead> <tbody>";
+
+    $.ajax({
+        type: "GET",
+        url: "https://desfrlopez.me/dleiva/api/pokemon_habilidades/",
+ 
+        success: function(data){
+
+            for (var i = 0; i < data.length ; i++ ){
+
+                cuerpoTabla += " <tr> " +
+                                "<td>" + data[i].id + "</td>" +
+                                "<td>" + data[i].pokemon_id+ "</td>"+
+                                "<td>" + data[i].habilidad_id+ "</td>"+
+                               
+                                
+                                "</tr>";
+
+            }
+
+            cuerpoTabla += " </tbody>";
+
+            $("#reportePersona").html(cuerpoTabla);
+            
+
+        },
+        dataType: "json"
+      });
+
+            
+  
+        
+      };
+      
+
+function insertarDatosHP(){
+
+    jQuery.ajaxSetup({async:false});
+
+    var datosForm = {
+        pokemon_id : $("#Pokemon").val(),
+        habilidad_id: $("#Habilidad").val(),
+       
+       
+    };
+
+    var mensaje = "Insercion Exitosa";
+    $.ajax({
+        type: "POST",
+        url: "https://desfrlopez.me/dleiva/api/pokemon_habilidades/",
+        data: JSON.stringify(datosForm),
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosPH();
+
+}
+
+function actualizarDatosHP(){
+
+    jQuery.ajaxSetup({async:false});
+
+    var datosForm = {
+        pokemon_id : $("#Pokemon").val(),
+        habilidad_id: $("#Habilidad").val(),
+    };
+
+    let id = $("#id").val();
+
+    var mensaje = "Actualizacion Exitosa";
+    $.ajax({
+        type: "PUT",
+        url: "https://desfrlopez.me/dleiva/api/pokemon_habilidades/" +id,
+        data: JSON.stringify(datosForm),
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosHP();
+
+}
+
+function borrarDatosHP(){
+
+    jQuery.ajaxSetup({async:false});
+
+    let id = $("#id").val();
+
+    var mensaje = "Borrado Exitoso Exitoso";
+    $.ajax({
+        type: "DELETE",
+        url: "https://desfrlopez.me/dleiva/api/pokemon_habilidades/"+id,
+        success: function(data){
+            console.log(data);
+            for (var i = 0; i < data.length ; i++ ){
+                mensaje += " Id Registro "+ data[i].insertId;                
+            }
+            alert(mensaje);
+        },
+        dataType: "json", 
+        contentType: "application/json; charset=utf-8"
+      });
+
+      cargarDatosHP();
+
+}
 
 
 
